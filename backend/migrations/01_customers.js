@@ -6,7 +6,7 @@ exports.up = function(knex) {
     table.string('last_name');
     table.string('phone');
     table.string('email');
-    table.decimal('acc_balance', 2)
+    table.decimal('acc_balance', 6, 2)
   })
 };
 
