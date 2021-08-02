@@ -1,6 +1,6 @@
 
 exports.up = function(knex) {
-  return knex.schema.createTable('bulk_rate', function(table){
+  return knex.schema.createTable('bulk_rates', function(table){
     table.increments('id').primary();
     table.string('category');
     table.decimal('rate', 5);
@@ -9,6 +9,9 @@ exports.up = function(knex) {
   })
 };
 
-exports.down = function(knex) {
+exports.down = async function(knex) {
+  await knex.schema.alterTable('bulk_rates', function(table){
+    table.dropForeign('game_id');
+  })
   return knex.schema.dropTableIfExists('games');
 };
