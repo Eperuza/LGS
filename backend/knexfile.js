@@ -1,13 +1,14 @@
 // Update with your config settings.
+require('dotenv').config();
 
 module.exports = {
 
   development: {
     client: 'postgresql',
     connection: {
-      database: 'lgs',
-      user:     'postgres',
-      password: 'docker'
+      database: process.env.DB_NAME,
+      user:     process.env.DB_USER,
+      password: process.env.DB_PASSWORD
     }
   },
 
