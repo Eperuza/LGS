@@ -8,13 +8,11 @@ exports.seed = function(knex) {
         {
           first_name: 'Simon',
           last_name: 'Bos',
-          pin:'0000',
           manager: true
         },
         {
           first_name: 'Kyle',
           last_name: 'Bot',
-          pin:'0001'
         }
       ]);
     });
