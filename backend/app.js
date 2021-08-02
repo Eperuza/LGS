@@ -1,8 +1,13 @@
 const express = require('express');
-app = express();
+const app = express();
+const v1Router = require('./api/v1.js')
 
-app.get('/', (req, res) => {
-  res.send('Hello!')
+app.use(express.json());
+
+app.get('/api/', (req, res) => {
+  res.send('Hello! at root of api')
 });
+
+app.use('/api/v1', v1Router);
 
 module.exports = app;
