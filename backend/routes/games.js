@@ -34,4 +34,13 @@ game.post('/new', (req, res) => {
   .then(data => res.status(201).send('Game succesfully created'))
 })
 
+//delete a a bulk category
+router.delete('/:gameId', (req, res) => {
+  const toDelete = parseInt(req.params.bulkId)
+  knex('games')
+  .where({id: toDelete})
+  .del()
+  .then(data => res.status(204).send('Game succesfully deleted'))
+})
+
 module.exports = router;
