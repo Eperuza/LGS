@@ -21,4 +21,11 @@ router.get('/:customerId', (req, res) => {
   .catch('An error occured')
 })
 
+//creates a customer
+router.post('/new', (req, res) => {
+  const newCustomer = req.body;
+  knex('customers')
+  .insert({...newCustomer})
+})
+
 module.exports = router;
