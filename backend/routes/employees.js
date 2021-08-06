@@ -26,7 +26,7 @@ router.post('/', (req, res) => {
   const newEmployee = req.body;
   knex('employees')
   .insert({...newEmployee})
-  .then(data => res.send('employee created').json(newEmployee));
+  .then(data => res.status(201).send('employee created').json(newEmployee));
 })
 
 //delete an employee
@@ -35,7 +35,7 @@ router.delete('/:employeeId', (req, res) => {
   knex('employees')
   .where({id: toDelete})
   .del()
-  .then(data => res.send('Employee succesfully deleted'))
+  .then(data => res.status(204).send('Employee succesfully deleted'))
 })
 
 //update an employee
@@ -44,7 +44,7 @@ router.put('/:employeeId', (req, res) => {
   knex('employees')
   .where({id: toUpdate})
   .update(req.body)
-  .then(data => res.send('Employee succesfully updated'))
+  .then(data => res.status(202).send('Employee succesfully updated'))
 })
 
 module.exports = router;

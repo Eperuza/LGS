@@ -33,7 +33,7 @@ router.post('/new', (req, res) => {
   const newCustomer = req.body;
   knex('customers')
   .insert({...newCustomer})
-  .then(data => res.send('Customer succesfully added'))
+  .then(data => res.status(201).send('Customer succesfully added'))
 })
 
 //delete a customer
@@ -42,7 +42,7 @@ router.delete('/:customerId', (req, res) => {
   knex('customers')
   .where({id: toDelete})
   .del()
-  .then(data => res.send('Customer succesfully deleted'))
+  .then(data => res.status(204).send('Customer succesfully deleted'))
 })
 
 //update a customer
@@ -51,7 +51,7 @@ router.put('/:customerId', (req, res) => {
   knex('customers')
   .where({id: toUpdate})
   .update(req.body)
-  .then(data => res.send('Customer succesfully updated'))
+  .then(data => res.status(202).send('Customer succesfully updated'))
 })
 
 module.exports = router;
