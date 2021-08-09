@@ -5,7 +5,7 @@ exports.up = function(knex) {
     table.string('category');
     table.decimal('rate', 5, 4);
     table.integer('game_id');
-    table.foreign('game_id').references('id').inTable('games');
+    table.foreign('game_id').references('id').inTable('games').onDelete('CASCADE');
   })
 };
 
