@@ -19,6 +19,7 @@ router.get('/:gameId', (req, res) => {
   .then(data => res.status(200).json(data))
 })
 
+//update a game
 router.put('/:gameId', (req, res) => {
   const toUpdate = parseInt(req.params.gameId)
   knex('games')
@@ -27,6 +28,7 @@ router.put('/:gameId', (req, res) => {
   .then(data => res.status(202).send('Game succesfully updated'))
 })
 
+//add a new game
 router.post('/new', (req, res) => {
   const newGame = req.body;
   knex('games')
@@ -34,7 +36,7 @@ router.post('/new', (req, res) => {
   .then(data => res.status(201).send('Game succesfully created'))
 })
 
-//delete a a bulk category
+//delete a game
 router.delete('/:gameId', (req, res) => {
   const toDelete = parseInt(req.params.bulkId)
   knex('games')
