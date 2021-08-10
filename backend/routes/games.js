@@ -19,7 +19,7 @@ router.get('/:gameId', (req, res) => {
   .then(data => res.status(200).json(data))
 })
 
-game.put('/:gameId', (req, res) => {
+router.put('/:gameId', (req, res) => {
   const toUpdate = parseInt(req.params.gameId)
   knex('games')
   .where({id: toUpdate})
@@ -27,7 +27,7 @@ game.put('/:gameId', (req, res) => {
   .then(data => res.status(202).send('Game succesfully updated'))
 })
 
-game.post('/new', (req, res) => {
+router.post('/new', (req, res) => {
   const newGame = req.body;
   knex('games')
   .insert(newGame)
