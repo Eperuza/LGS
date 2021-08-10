@@ -33,8 +33,6 @@ router.post('/:customerId', async (req, res) => {
   .from('customers')
   .where({id: customerId})
   .then(data => {
-    console.log('account balance',data)
-    console.log('math?', parseInt(data[0].acc_balance) + parseInt(amount))
     knex('customers')
     .where({id: customerId})
     .update({acc_balance: parseInt(data[0].acc_balance) + parseInt(amount)})
